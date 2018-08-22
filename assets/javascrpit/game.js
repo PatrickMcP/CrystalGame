@@ -1,7 +1,6 @@
 //global variables
 var wins = 0;
 var losses = 0;
-
 //crystal variables
 var crystal = {
     blue:
@@ -9,13 +8,11 @@ var crystal = {
         name: "Blue",
         value: 0
     },
-    
     green:
     {
         name: "Green",
         value: 0
     },
-    
     yellow:
     {
         name: "Yellow",
@@ -27,14 +24,9 @@ var crystal = {
         value: 0
     }
 }
-
 var currentScore = 0;
 var targetScore = 0;
-
-
-
 //functions
-
 var startGame = function () {
     currentScore = 0;
     targetScore = getRandom(19,120);
@@ -46,28 +38,16 @@ var startGame = function () {
     $("#yourScore").html(currentScore);
     $("#targetScore").html(targetScore);
     
-    //test
-    console.log("-------------------------")
-    console.log("Target Score: " + targetScore)
-    console.log("Blue: " + crystal.blue.value)
-    console.log("green: " + crystal.green.value)
-    console.log("Red: " + crystal.red.value)
-    console.log("Yellow: " + crystal.yellow.value)
-    console.log("-------------------------")
-
 }
-
 var getRandom = function (min, max) {
     return Math.floor(Math.random() * (max - min +1)) + min;
 };
-
 var addValues = function(crystal) {
     currentScore = currentScore + crystal.value;
     $("#yourScore").html(currentScore);
     checkWin();
 
 };
-
 var checkWin = function () {
     if(currentScore > targetScore) {
         alert("You Lost!");
@@ -77,12 +57,11 @@ var checkWin = function () {
     }
     else if (currentScore == targetScore) {
         alert("You Win!");
-        wins = wins++;
+        wins++;
         $("#wins").html(wins);
         startGame();
     }
 }
-
 //main process
 $('#blue').click(function() {
     addValues(crystal.blue);
@@ -99,6 +78,5 @@ $('#red').click(function() {
 $('#yellow').click(function() {
     addValues(crystal.yellow);
 });
-
 startGame ();
 checkWin ();
